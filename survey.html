@@ -39,8 +39,14 @@
 
 
     <script src="data/VIE_departures_flight_list.js"></script>
-    
+    <script src="data/airport_list.js"></script>
+    <script src="data/postal_Code_Germany.js"></script>
+    <script src="data/postal_Code_Austria.js"></script>
+
     <script src="scripts/flight_search.js"></script>
+    <script src="scripts/airport_search.js"></script>
+    <script src="scripts/postal_code_search.js"></script>
+
     <script src="scripts/auto_complete_ui.js"></script>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/smoothness/jquery-ui.css">
@@ -52,11 +58,24 @@
           const listSearchHandler = () => {
             console.log("Current Page Index: ", api.fn.getCurrentPageIndex() );
             
-            if ( api.fn.getCurrentPageIndex()==2) {
-              show_flight_search_box("Core_Q2");
-            } else {
-              hide_flight_search_box();
-            };
+            switch (api.fn.getCurrentPageIndex()) {
+              case 3:
+                show_flight_search_box("Core_Q2"); //flight
+                break;
+              case 12:
+                show_airport_search_box("Core_Q6_2"); ///From Airport
+                break;
+              case 14:
+                 show_postal_code_search_box("Core_Q6_3a"); //If arriving VIE by plan: 
+                break;                
+              case 16:
+                 show_postal_code_search_box("Core_Q6_4a"); //If arriving VIE by ground transport: 
+                break;
+                
+              default:
+                aui_hide_external_search_box();
+                break;
+            }
           }    
           api.events.subscribe('next', listSearchHandler);
           api.events.subscribe('back', listSearchHandler);

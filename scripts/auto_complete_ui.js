@@ -123,7 +123,7 @@ function aui_update_current_search_list(term){
 }
 
 function aui_hide_external_search_box() {
-  $( ".external-search-box" ).autocomplete( "destroy" );
+  $( ".external-search-box" ).autocomplete("destroy" );
 }
 
 ////////////////////////////////////////////
@@ -135,7 +135,18 @@ function selected_handler(val) {
     case "Core_Q2": //Flight number
       save_flight_value(currentSearchQuestion, val);
       $('.rt-btn.rt-btn-next').show(); 
-      break;     
+      break;  
+
+    case "Core_Q6_2": //From Airport
+      save_airport_value(currentSearchQuestion, val);
+      $('.rt-btn.rt-btn-next').show(); 
+      break;  
+
+    case "Core_Q6_3a": //Postal code
+    case "Core_Q6_4a": //Postal code    
+      //save_postal_code_value(currentSearchQuestion, val);
+      //$('.rt-btn.rt-btn-next').show(); 
+      break;  
 
     default:
       break;         
@@ -147,9 +158,9 @@ function changed_handler(val) {
   console.log('changed_handler: ', val);
   console.log('currentSearchQuestion: ', currentSearchQuestion);
   switch (currentSearchQuestion) {
-    case "Core_Q11": //Final airport
-    case "Core_Q13": //From  airport    
-      save_airport_value(currentSearchQuestion, val);
+    case "Core_Q6_3a": //Postal code
+    case "Core_Q6_4a": //Postal code    
+      save_postal_code_value(currentSearchQuestion, val);
       $('.rt-btn.rt-btn-next').show(); 
       break;     
 

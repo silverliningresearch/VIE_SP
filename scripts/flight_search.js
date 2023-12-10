@@ -106,9 +106,7 @@ function save_flight_value(question, value) {
   api.fn.answers({Q2_flight_number:   value.Flight});
   api.fn.answers({Q2_destination:   value.Dest});
   api.fn.answers({Q2_destination_name: value.DestName});
-  api.fn.answers({Core_Q1:  value.DestName });
   
-
   console.log("save flight  done!");
 }
 
@@ -116,18 +114,10 @@ function show_flight_search_box(question) {
   load_flight_list();
   
   var defaultValue = "";
-  // if (question == "Core_Q11") {
-  //   defaultValue = api.fn.answers().Core_Q11_ext;
-
-  // }
-  // else if (question == "Core_Q13")
-  // {
-  //   defaultValue = api.fn.answers().Core_Q13_ext;
-  // }
 
   aui_show_external_search_box(question, defaultValue);
 }
 
-function hire_flight_search_box() {
+function hide_flight_search_box() {
   aui_hide_external_search_box();
 }

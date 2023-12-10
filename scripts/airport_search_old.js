@@ -1,11 +1,11 @@
 var airportsList;
-/************************************/
+var item_found;
 
 function load_airports_list() {
   airportsList = JSON.parse(airport_list);
 
   for (i = 0; i < airportsList.length; i++) {
-    airportsList[i].Show = airportsList[i].AirportName + ", " +  airportsList[i].CountryName + " (" + airportsList[i].AirportCode +")" ;
+    airportsList[i].Show = airportsList[i].airport;
   }
 
   aui_init_search_list(airportsList);
@@ -16,22 +16,35 @@ function save_airport_value(question, value) {
   console.log("question:", question);
   console.log("value:", value);
 
-  api.fn.answers({Core_Q6_2_AirportCode:   value.AirportCode}); 
-  api.fn.answers({Core_Q6_2_AirportName:   value.AirportName}); 
-  api.fn.answers({Core_Q6_2_CountryCode:   value.CountryCode}); 
-  api.fn.answers({Core_Q6_2_CountryName:   value.CountryName}); 
+  if (question == "Core_Q11") {
+    api.fn.answers({Core_Q11_ext:  value});
 
-  console.log("save_airport_value  done!");
+    api.fn.answers({Q11_Recoded:  value});
+  }
+  else if (question == "Core_Q13")
+  {
+    api.fn.answers({Core_Q13_ext:  value});
+  }
+
+  console.log("save_airport done!");
 }
 
 function show_airport_search_box(question) {
   load_airports_list();
   
   var defaultValue = "";
+  if (question == "Core_Q11") {
+    defaultValue = api.fn.answers().Core_Q11_ext;
+
+  }
+  else if (question == "Core_Q13")
+  {
+    defaultValue = api.fn.answers().Core_Q13_ext;
+  }
 
   aui_show_external_search_box(question, defaultValue);
 }
 
-function hide_airport_search_box() {
+function hire_airport_search_box(question) {
   aui_hide_external_search_box();
 }
