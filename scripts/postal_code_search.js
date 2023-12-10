@@ -52,6 +52,8 @@ function show_postal_code_search_box(question) {
   var defaultValue = "";
 
   aui_show_external_search_box(question, defaultValue);
+  
+  $('.external-search-box').show(); 
 }
 
 function hide_postal_code_search_box() {
