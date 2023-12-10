@@ -18,7 +18,7 @@ function aui_item_in_list_found(list, item) {
       }
     }
   }
-  $('.rt-btn.rt-btn-next').hide(); 
+  //$('.rt-btn.rt-btn-next').hide(); 
   return false;
 }
 
@@ -82,7 +82,7 @@ function aui_show_external_search_box(searchQuestion, defaultValue) {
     },
     select: function( event, ui ) {
       $( "#external-search-box-select2" ).val(ui.item.Show);
-      selected_handler(ui.item.Show); //save select item
+      selected_handler(ui.item); //save select item
       return false;
     },
     change: function( event, ui ) {
@@ -132,9 +132,8 @@ function selected_handler(val) {
   console.log('currentSearchQuestion: ', currentSearchQuestion);
 
   switch (currentSearchQuestion) {
-    case "Core_Q11": //Final airport
-    case "Core_Q13": //From  airport
-      save_airport_value(currentSearchQuestion, val);
+    case "Core_Q2": //Flight number
+      save_flight_value(currentSearchQuestion, val);
       $('.rt-btn.rt-btn-next').show(); 
       break;     
 
