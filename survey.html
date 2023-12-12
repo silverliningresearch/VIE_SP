@@ -66,12 +66,20 @@
                 show_airport_search_box("Core_Q6_2"); ///From Airport
                 break;
               case 14:
-                 show_postal_code_search_box("Core_Q6_3a"); //If arriving VIE by plan: 
+                 show_postal_code_search_box("Core_Q6_3"); //If arriving VIE by plan: 
                 break;                
               case 16:
-                 show_postal_code_search_box("Core_Q6_4a"); //If arriving VIE by ground transport: 
+                 show_postal_code_search_box("Core_Q6_4"); //If arriving VIE by ground transport: 
                 break;
-                
+              case 18:
+                show_postal_code_search_box("Core_Q7_2"); //place  mainly spend the trip
+                break;
+
+              case 999:
+                show_postal_code_search_box("Core_Q14"); //permanent residence?
+                break;
+
+
               default:
                 aui_hide_external_search_box();
                 break;

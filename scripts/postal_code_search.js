@@ -5,21 +5,18 @@ function load_postal_codes_list(question) {
   var country;
 
   postalCodeList = [];
-  if (question == "Core_Q6_3a") 
-  {
-    country = api.fn.answers().Core_Q6_3a;
-  } 
-  else if (question == "Core_Q6_4a") 
-  {
-    country = api.fn.answers().Core_Q6_4a;
-  } 
 
-  if (country == 2) {
-    postalCodeList = JSON.parse(postalCodeAustria); //Austria
-  }
-  else 
-  {
-    postalCodeList = JSON.parse(postalCodeGermany); //Germany
+  switch (question) {
+    case "Core_Q6_3":
+    case "Core_Q6_4":
+    case "Core_Q7_2":
+    case "Core_Q14":              
+      postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      break;
+
+    default:
+      postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      break;
   }
 
   for (i = 0; i < postalCodeList.length; i++) {
@@ -34,14 +31,22 @@ function save_postal_code_value(question, value) {
   console.log("question:", question);
   console.log("value:", value);
 
-  if (question == "Core_Q6_3a") 
-  {
-    api.fn.answers({Core_Q6_3a_PostalCode: value}); 
-  } 
-  else if (question == "Core_Q6_4a") 
-  {
-    api.fn.answers({Core_Q6_4a_PostalCode: value}); 
-  } 
+  switch (question) {
+    case "Core_Q6_3":
+      api.fn.answers({Core_Q6_3_PostalCode: value}); 
+      break;
+    case "Core_Q6_4":
+      api.fn.answers({Core_Q6_4_PostalCode: value}); 
+      break;
+    case "Core_Q7_2":
+      api.fn.answers({Core_Q7_2_PostalCode: value}); 
+      break;
+    case "Core_Q14":              
+      api.fn.answers({Core_Q14_PostalCode: value}); 
+      break;
+    default:
+      break;
+  }
 
   console.log("save postal_code  done!");
 }

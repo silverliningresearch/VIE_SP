@@ -142,10 +142,12 @@ function selected_handler(val) {
       $('.rt-btn.rt-btn-next').show(); 
       break;  
 
-    case "Core_Q6_3a": //Postal code
-    case "Core_Q6_4a": //Postal code    
+    case "Core_Q6_3": //Postal code
+    case "Core_Q6_4": //Postal code    
+    case "Core_Q7_2": //Postal code    
+    case "Core_Q14": //Postal code    
       //save_postal_code_value(currentSearchQuestion, val);
-      //$('.rt-btn.rt-btn-next').show(); 
+      $('.rt-btn.rt-btn-next').show(); 
       break;  
 
     default:
@@ -158,8 +160,10 @@ function changed_handler(val) {
   console.log('changed_handler: ', val);
   console.log('currentSearchQuestion: ', currentSearchQuestion);
   switch (currentSearchQuestion) {
-    case "Core_Q6_3a": //Postal code
-    case "Core_Q6_4a": //Postal code    
+    case "Core_Q6_3": //Postal code
+    case "Core_Q6_4": //Postal code    
+    case "Core_Q7_2": //Postal code    
+    case "Core_Q14": //Postal code     
       save_postal_code_value(currentSearchQuestion, val);
       $('.rt-btn.rt-btn-next').show(); 
       break;     
