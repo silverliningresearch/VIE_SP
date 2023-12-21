@@ -8,11 +8,43 @@ function load_postal_codes_list(question) {
 
   switch (question) {
     case "Core_Q6_3":
-    case "Core_Q6_4":
-    case "Core_Q7_2":
-    case "Core_Q14":              
-      postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      if (api.fn.answers().Core_Q6_3a == 3 ) {
+        postalCodeList = JSON.parse(postalCodeGermany); 
+      }
+      else
+      {
+        postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      }
       break;
+    case "Core_Q6_4":
+      if (api.fn.answers().Core_Q6_4a == 3 ) {
+        postalCodeList = JSON.parse(postalCodeGermany); 
+      }
+      else
+      {
+        postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      }
+      break;      
+    case "Core_Q7_2":
+      if (api.fn.answers().Core_Q7_2 == 3 ) {
+        postalCodeList = JSON.parse(postalCodeGermany); 
+      }
+      else
+      {
+        postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      }
+      break;         
+    case "Core_Q14":      
+      var country = api.fn.answers().Core_Q13;
+      if (country.includes("Germany")) {
+        postalCodeList = JSON.parse(postalCodeGermany); 
+      }
+      else if (country.includes("Austria")) 
+      {
+        postalCodeList = JSON.parse(postalCodeAustria); //Austria
+      }
+    break;  
+
 
     default:
       postalCodeList = JSON.parse(postalCodeAustria); //Austria
