@@ -166,7 +166,7 @@ function prepareInterviewData() {
     let flight = flight_list_full[i];
 
     //airport_airline
-    flight.quota_id = flight.Flight;//code for compare
+    flight.quota_id = flight.AirlineCode + "-" + flight.Dest;//code for compare
 
     //current_period:2023-02
     //flight.Date: 08-02-2023
