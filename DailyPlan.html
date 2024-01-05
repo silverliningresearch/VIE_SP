@@ -69,6 +69,7 @@
 
         data.addColumn('string', 'Time');
         data.addColumn('string', 'Terminal');
+        data.addColumn('string', 'Gate');
         data.addColumn('string', 'Flight');
         data.addColumn('string', 'To');
         //data.addColumn('string', 'DOOP');
@@ -86,6 +87,7 @@
             { 
                 data.addRows([[row.Date_Time,
                 row.TER, 
+                row.Gate, 
                 row.Flight, row.DestName, 
                 //row.doop, 
                 Number(row.remaining_flights), 
@@ -115,18 +117,33 @@
         document.getElementById('dashboard_div'));
 
         //create fiter
-        var options = {
+        var terminal_filter_options = {
           'filterColumnLabel': 'Terminal',
           "ui": {"label": "", 
                 "labelStacking": 'horizotal',
-                "caption": "Filter by terminal",
+                "caption": "Filter by Terminal",
                 }
         };
         
-        var tableFilter = new google.visualization.ControlWrapper({
+        var terminal_filter = new google.visualization.ControlWrapper({
           'controlType': 'CategoryFilter',
-          'containerId': 'filter_div',
-          'options': options
+          'containerId': 'terminal_filter_div',
+          'options': terminal_filter_options
+        });
+
+        //create fiter
+        var gate_filter_options = {
+          'filterColumnLabel': 'Gate',
+          "ui": {"label": "", 
+                "labelStacking": 'horizotal',
+                "caption": "Filter by Gate",
+                }
+        };
+        
+        var gate_filter = new google.visualization.ControlWrapper({
+          'controlType': 'CategoryFilter',
+          'containerId': 'gate_filter_div',
+          'options': gate_filter_options
         });
 
         // Create table
@@ -141,11 +158,11 @@
           }
         });
 
-        dashboard.bind(tableFilter, tableChart);
+        dashboard.bind([terminal_filter, gate_filter], tableChart);
 
         var view = new google.visualization.DataView(data);
         view.hideColumns([priority_col, priority_col-1]); //hide priority one
-        //document.getElementById("filter_div").style.display = "none";
+        //document.getElementById("terminal_filter_div").style.display = "none";
         dashboard.draw(view);
 
          //overall_status
@@ -164,8 +181,9 @@
 
     <div id="dashboard_div">
       <!--Divs that will hold each control and chart-->
-      <div id="filter_div" style="font-size: 15px"> </div>
-        </br>
+      <div id="terminal_filter_div" style="font-size: 15px"> </div>
+      <div id="gate_filter_div" style="font-size: 15px"> </div>
+    </br>
       <div id="table_div"></div>
     </div>
 
