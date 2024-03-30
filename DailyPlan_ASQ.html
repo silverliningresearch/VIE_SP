@@ -1,6 +1,6 @@
 <html>
     <head>
-		<title>Daily plan - VIE ASQ Survey</title>
+		<title>Daily plan - BUD ASQ Survey</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     
     <script src="data/ASQ_Quota_Airline_Dest.js"></script>
@@ -8,14 +8,14 @@
     <script src="data/ASQ_Quota_Dest.js"></script>
     <script src="scripts/PrepareData_ASQ.js"></script>
     <script src="scripts/CalculateData_ASQ.js"></script>
-    
+    <script src="data/VIE_departures_flight_list.js"></script>
+
     <script type="text/javascript" src="https://silverliningresearch.github.io/daily_plan_data_asq/VIE/Departures/interview_statistics_asq.js"></script>
-    <script type="text/javascript" src="data/VIE_departures_flight_list.js"></script>
-    
-    <style>
+
+<style>
       .table-font {
         font-size: 16px;
-        /* height: 18px; */
+        /* height: 18px;  */
       }
 
       .filter-font {
@@ -45,9 +45,7 @@
         //define header
         data.addColumn('string', 'Date');
         data.addColumn('string', 'Time');
-        data.addColumn('number', 'TER');
-        data.addColumn('string', 'Gate Area');
-        data.addColumn('string', 'Gate');
+        //data.addColumn('number', 'TER');
         data.addColumn('string', 'Flight');
         data.addColumn('string', 'To');
         data.addColumn('number', 'Remaining Flights');
@@ -73,9 +71,10 @@
             data.addRows([[
                 row.Date, 
                 row.Time, 
-                row.TER, row.GateArea, row.Gate,
+                //row.TER, 
                 row.Flight_Show, row.DestName, 
-                Number(row.remaining_flights), Number(row.Quota), Number(row.Completed), Number(row.Difference), 
+                Number(row.remaining_flights), Number(row.Quota), Number(row.Completed), 
+                Number(row.Difference), 
                 Number(row.Completed_percent), 
                 row.ASQ_missing,
                 Number(row.Prioritisation_score), 
@@ -104,10 +103,10 @@
 
        //create fiter
        var options_Terminal = {
-          'filterColumnLabel': 'TER',
+          'filterColumnLabel': 'To',
           "ui": {"label": "", 
                 "labelStacking": 'horizotal',
-                "caption": "Select Terminal",
+                "caption": "Select destination",
                 }
         };
 
@@ -117,19 +116,19 @@
           'options': options_Terminal
         });
 
-        var options = {
-          'filterColumnLabel': 'Gate Area',
-          "ui": {"label": "", 
-                "labelStacking": 'horizotal',
-                "caption": "Select Gate Area",
-                }
-        };
+        // var options = {
+        //   'filterColumnLabel': 'Gate Area',
+        //   "ui": {"label": "", 
+        //         "labelStacking": 'horizotal',
+        //         "caption": "Select Gate Area",
+        //         }
+        // };
         
-        var tableFilter = new google.visualization.ControlWrapper({
-          'controlType': 'CategoryFilter',
-          'containerId': 'filter_div',
-          'options': options
-        });
+        // var tableFilter = new google.visualization.ControlWrapper({
+        //   'controlType': 'CategoryFilter',
+        //   'containerId': 'filter_div',
+        //   'options': options
+        // });
 
         // Create table
         var tableChart = new google.visualization.ChartWrapper({
@@ -143,7 +142,7 @@
           }
         });
 
-        dashboard.bind([tableFilter_Terminal, tableFilter], tableChart);
+        dashboard.bind([tableFilter_Terminal], tableChart);
 
         var view = new google.visualization.DataView(data);
         view.hideColumns([priority_col, priority_col-1]); //unncessary columns: Date_Tome & priority
@@ -163,7 +162,7 @@
     </script>
   </head>
   <body>
-		<h1>Daily plan - VIE ASQ Survey</h1>
+		<h1>Daily plan - BUD ASQ Survey</h1>
     <h5 id="download_time_asq"></h5>
     <h4 id="overall_status"></h4>
     

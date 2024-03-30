@@ -161,11 +161,6 @@ function prepareInterviewData_asq() {
     var Agent_Letters = parts[0];
     var Agent_Destination = parts[1];
     
-    //speciall treatment for EJU EZY MBU
-    // if (Agent_Letters == "EZY") Agent_Letters = "U2";
-    // if (Agent_Letters == "EJU") Agent_Letters = "EC";
-    // if (Agent_Letters == "MBU") Agent_Letters = "DI";
-
     var interview_quarter = getQuarterFromMonth_asq(interview_month, interview_year);
 
     if ((currentQuarter == interview_quarter))
@@ -247,17 +242,6 @@ function prepareInterviewData_asq() {
   for (i = 0; i < today_flight_list_asq.length; i++) {
     let flight = today_flight_list_asq[i];
 
-    //get gate info
-    for (j = 0; j < gate_info.length; j++) {
-      let gate = gate_info[j];
-      if ((gate.Flight == flight.Flight) && (gate.Date == flight.Date))
-      {
-        flight.GateArea = gate.GateArea;
-        flight.Gate = gate.Gate;
-        break;
-      }
-    }
-
     for (j = 0; j < dest_airline_quota_asq.length; j++) {
       let quota = dest_airline_quota_asq[j];
       if ((quota.Airline_Dest == flight.Airline_Dest) )
@@ -282,6 +266,7 @@ function prepareInterviewData_asq() {
        }
     }
 
+    //
     if (flight.Quota>0) daily_plan_data_asq.push(flight);
   }
 }
