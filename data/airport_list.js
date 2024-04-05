@@ -49465,12 +49465,6 @@
         "CountryName": "Italy"
     },
     {
-        "AirportCode": "VIE",
-        "AirportName": "Vienna International",
-        "CountryCode": "AT",
-        "CountryName": "Austria"
-    },
-    {
         "AirportCode": "VIF",
         "AirportName": "Vieste Heliport",
         "CountryCode": "IT",
