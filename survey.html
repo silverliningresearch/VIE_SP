@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADV Airport Travel Survey 2024</title>
+    <title>Musterwoche 2025 2024</title>
 	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link
@@ -30,7 +30,7 @@
 
   <body>
     <survalyzer-survey
-      surveyhash="mxkaskffoc"
+      surveyhash="oghyuvysvt"
       tenant="silverlining"
     ></survalyzer-survey>
 
@@ -60,25 +60,9 @@
             
             switch (api.fn.getCurrentPageIndex()) {
               case 3:
-                show_flight_search_box("Core_Q2"); //flight
+                show_flight_search_box("Flight_Number"); //flight
                 break;
-              case 11:
-                show_airport_search_box("Core_Q6_2"); ///From Airport
-                break;
-              case 13:
-                 show_postal_code_search_box("Core_Q6_3"); //If arriving VIE by plan: 
-                break;                
-              case 15:
-                 show_postal_code_search_box("Core_Q6_4"); //If arriving VIE by ground transport: 
-                break;
-              case 18:
-                show_postal_code_search_box("Core_Q7_2"); //place  mainly spend the trip
-                break;
-              case 29:
-                show_postal_code_search_box("Core_Q14"); //permanent residence?
-                break;
-
-
+ 
               default:
                 aui_hide_external_search_box();
                 break;
