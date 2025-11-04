@@ -144,7 +144,9 @@ function prepareInterviewData() {
 
     //current_period: 2023-12
     //InterviewDate: 2023-04-01
-    if (current_period == interview.InterviewDate.substring(0,7))//"2023-04-01",
+    //if (current_period == interview.InterviewDate.substring(0,7))
+    if (("2025-10" == interview.InterviewDate.substring(0,7))
+      ||("2025-11" == interview.InterviewDate.substring(0,7)))
     {
       if (interview["quota_id"]) {
         var quota_id = '"quota_id"' + ":" + '"' +  interview["quota_id"] + '", ';
@@ -174,7 +176,8 @@ function prepareInterviewData() {
 
     //current_period:2023-02
     //flight.Date: 08-02-2023
-    if (current_period == flight.Date.substring(6,10) + "-" +  flight.Date.substring(3,5)) { 
+    //if (current_period == flight.Date.substring(6,10) + "-" +  flight.Date.substring(3,5))
+    { 
       this_month_flight_list.push(flight);
     }		 
 
