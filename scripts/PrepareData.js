@@ -127,7 +127,8 @@ function prepareInterviewData() {
   quota_data.length = 0;
   for (i = 0; i < quota_data_temp.length; i++) {
     if ((quota_data_temp[i].Quota>0)
-         && (quota_data_temp[i].period_id == current_period))
+        // && (quota_data_temp[i].period_id == current_period)
+        )
     {
       quota_data.push(quota_data_temp[i]);
     }
