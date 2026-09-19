@@ -203,7 +203,7 @@ function prepareInterviewData() {
       let quota = quota_data[j];
       if ((quota.quota_id == flight.quota_id) && (quota.Quota>0))
       {
-        flight.Quota = quota.Quota;
+        flight.Quota = (quota.Quota*1000) / 983;
         daily_plan_data.push(flight);
        }
     }
